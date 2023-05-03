@@ -52,6 +52,7 @@ input {
 .card-image {
   width: 340px;
   height: 240px;
+  border-radius: 5px;
   object-fit: cover;
 }
 
@@ -64,8 +65,13 @@ img {
 .info {
   justify-content: center;
   align-items: center;
-  padding: 15px;
+  /* padding: 15px; */
   display: flex;
+  background: #f1ebeb;
+  padding: 20px 24px;
+  border-bottom: 1px solid #eee;
+  border-left: 1px solid #eee;
+  border-right: 1px solid #eee;
   }
 
   .info-item:not(:last-child){
