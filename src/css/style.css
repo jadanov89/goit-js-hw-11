@@ -48,3 +48,58 @@ input {
   display: flex;
   justify-content: center;
 }
+
+.card-image {
+  width: 340px;
+  height: 240px;
+  object-fit: cover;
+}
+
+img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
+
+.info {
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  display: flex;
+  }
+
+  .info-item:not(:last-child){
+    margin-right: 20px;
+  }
+
+  .photo-card {
+    padding: 5px;
+    border: 1px solid #000;
+    border-radius: 8px;
+    padding-bottom: 0px;
+  }
+
+  .hide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    display: none;
+  }
+  
+  .load-more {
+    border-radius: 5px;
+    width: 130px;
+    outline: transparent;
+    border: 1px solid #eee;
+    border-radius: 5px;
+    font-size: 16px;
+    color: white;
+    border-style: outset;
+  }
