@@ -12,7 +12,7 @@ body {
   margin: 0 0 30px;
   padding: 10px 0;
   display: flex;
-  position: fixed; 
+  /* position: fixed;  */
   top: 0;
 }
 
@@ -37,11 +37,12 @@ input {
 }
 
 .gallery {
+  display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 30px;
   list-style: none;
-  display: flex;
+  
 }
 
 .button-wrapper {
@@ -65,23 +66,30 @@ img {
 .info {
   justify-content: center;
   align-items: center;
-  /* padding: 15px; */
+  padding: 15px;
   display: flex;
-  background: #f1ebeb;
-  padding: 20px 24px;
+  background: #ffffff;
   border-bottom: 1px solid #eee;
   border-left: 1px solid #eee;
   border-right: 1px solid #eee;
   }
+
+.info-item {
+  text-align: center;
+}
 
   .info-item:not(:last-child){
     margin-right: 20px;
   }
 
   .photo-card {
-    padding: 5px;
-    border: 1px solid #000;
-    border-radius: 8px;
+    -webkit-box-shadow: 0px 1px 1px rgba(0,0,0,.12),0px 4px 4px rgba(0,0,0,.06),1px 4px 6px rgba(0,0,0,.16);
+    box-shadow: 0px 1px 1px rgba(0,0,0,.12),0px 4px 4px rgba(0,0,0,.06),1px 4px 6px rgba(0,0,0,.16);
+    -webkit-transition: -webkit-box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: -webkit-box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    transition: box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1), -webkit-box-shadow 250ms cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 5px;
     padding-bottom: 0px;
   }
 
@@ -108,4 +116,18 @@ img {
     font-size: 16px;
     color: white;
     border-style: outset;
+  }
+
+  .hide {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0 0 0 0);
+    overflow: hidden;
+    display: none;
   }

@@ -9,9 +9,18 @@ const searchButtonEl = document.querySelector('.search-button');
 const loadMoreButtonEl = document.querySelector('.load-more');
 const galleryEl =  document.querySelector('.gallery');
 
+
 const pixabayApiService = new PixabayApiService();
 
 formEl.addEventListener('submit', onSearch);
+loadMoreButtonEl.addEventListener('click', onLoadMore);
+
+let lightbox = new SimpleLightbox('.gallery a', {
+  captionSelector: 'img',
+  captionsData: 'alt',
+  captionPosition: 'bottom',
+  captionDelay: 250,
+});
 
 async function onSearch(event) {
     event.preventDefault();
@@ -32,11 +41,30 @@ async function onSearch(event) {
         Notiflix.Notify.success(
           `Hooray! We found ${imagesArr.hits.length} images.`
         );
-      }
+      } 
       clearMarkup();
       renderImages(imagesArr.hits);
-      //lightbox.refresh();
+      lightbox.refresh();
       loadMoreButtonEl.disabled = false;
+      pixabayApiService.incrementPege();
+    } catch (error) {
+      Notiflix.Report.failure(`${error.message}`);
+    }
+  }
+
+  async function onLoadMore() {
+    try {
+      const imagesArr = await pixabayApiService.fetchImages();
+      renderImages(imagesArr.hits);
+      lightbox.refresh();
+      const nextPageImages = imagesArr.hits.length;
+      if (nextPageImages < 40) {
+        Notiflix.Notify.info(
+          "We're sorry, but you've reached the end of search results."
+        );
+        oadMoreButtonEl.classList.add('hide');
+      }
+  
       pixabayApiService.incrementPege();
     } catch (error) {
       Notiflix.Report.failure(`${error.message}`);
@@ -83,4 +111,9 @@ function createImageCard({
 
   function clearMarkup() {
     galleryEl.innerHTML = '';
+    
   }
+
+  // function loadMoreBtnHide() {
+  //   loadMoreButtonEl.style.display = 'none';
+  // }
