@@ -46,6 +46,7 @@ async function onSearch(event) {
       clearMarkup();
       renderImages(imagesArr.hits);
       lightbox.refresh();
+      loadMoreButtonEl.classList.remove('hide');
       loadMoreButtonEl.classList.add('on');
       // loadMoreButtonEl.disabled = false;
       pixabayApiService.incrementPege();
@@ -64,6 +65,7 @@ async function onSearch(event) {
         Notiflix.Notify.info(
           "We're sorry, but you've reached the end of search results."
         );
+        loadMoreButtonEl.classList.remove('on');
         loadMoreButtonEl.classList.add('hide');
       }
   
