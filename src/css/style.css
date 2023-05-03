@@ -131,3 +131,7 @@ img {
     overflow: hidden;
     display: none;
   }
+
+  .on {
+    display: block;
+  }

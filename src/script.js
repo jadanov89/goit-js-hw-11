@@ -9,6 +9,7 @@ const searchButtonEl = document.querySelector('.search-button');
 const loadMoreButtonEl = document.querySelector('.load-more');
 const galleryEl =  document.querySelector('.gallery');
 
+loadMoreButtonEl.classList.add('hide');
 
 const pixabayApiService = new PixabayApiService();
 
@@ -45,7 +46,8 @@ async function onSearch(event) {
       clearMarkup();
       renderImages(imagesArr.hits);
       lightbox.refresh();
-      loadMoreButtonEl.disabled = false;
+      loadMoreButtonEl.classList.add('on');
+      // loadMoreButtonEl.disabled = false;
       pixabayApiService.incrementPege();
     } catch (error) {
       Notiflix.Report.failure(`${error.message}`);
@@ -62,7 +64,7 @@ async function onSearch(event) {
         Notiflix.Notify.info(
           "We're sorry, but you've reached the end of search results."
         );
-        oadMoreButtonEl.classList.add('hide');
+        loadMoreButtonEl.classList.add('hide');
       }
   
       pixabayApiService.incrementPege();
