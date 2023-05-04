@@ -116,6 +116,7 @@ img {
     font-size: 16px;
     color: white;
     border-style: outset;
+    background-color: blueviolet;
   }
 
   .hide {
