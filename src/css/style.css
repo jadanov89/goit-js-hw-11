@@ -4,6 +4,7 @@ body {
 }
 
 .search-form {
+  position: sticky;
   width: 100%;
   z-index: 1;
   background-color: #3f56b1;
@@ -115,8 +116,8 @@ img {
     border-radius: 5px;
     font-size: 16px;
     color: white;
-    border-style: outset;
     background-color: blueviolet;
+    border-style: outset;
   }
 
   .hide {
