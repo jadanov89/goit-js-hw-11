@@ -9,7 +9,7 @@ const searchButtonEl = document.querySelector('.search-button');
 const loadMoreButtonEl = document.querySelector('.load-more');
 const galleryEl =  document.querySelector('.gallery');
 
-loadMoreButtonEl.classList.add('hide');
+loadMoreBtnAdd(); 
 
 const pixabayApiService = new PixabayApiService();
 
@@ -46,9 +46,7 @@ async function onSearch(event) {
       clearMarkup();
       renderImages(imagesArr.hits);
       lightbox.refresh();
-      loadMoreButtonEl.classList.remove('hide');
-      loadMoreButtonEl.classList.add('on');
-      // loadMoreButtonEl.disabled = false;
+      loadMoreBtnHideOne();
       pixabayApiService.incrementPege();
     } catch (error) {
       Notiflix.Report.failure(`${error.message}`);
@@ -65,8 +63,7 @@ async function onSearch(event) {
         Notiflix.Notify.info(
           "We're sorry, but you've reached the end of search results."
         );
-        loadMoreButtonEl.classList.remove('on');
-        loadMoreButtonEl.classList.add('hide');
+        loadMoreBtnOneHide();
       }
   
       pixabayApiService.incrementPege();
@@ -118,6 +115,16 @@ function createImageCard({
     
   }
 
-  // function loadMoreBtnHide() {
-  //   loadMoreButtonEl.style.display = 'none';
-  // }
+  function loadMoreBtnAdd() {
+    loadMoreButtonEl.classList.add('hide');
+  }
+
+  function loadMoreBtnHideOne() {
+    loadMoreButtonEl.classList.remove('hide');
+    loadMoreButtonEl.classList.add('on');
+  }
+
+  function loadMoreBtnOneHide() {
+    loadMoreButtonEl.classList.remove('on');
+    loadMoreButtonEl.classList.add('hide');
+  }
